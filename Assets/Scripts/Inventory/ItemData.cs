@@ -77,7 +77,7 @@ public static class ItemData
                 armour = 0;
                 heal = 0;
                 iconName = "Axe_1";
-                meshName = "Axe_1";
+                meshName = "Weapon/Axe";
                 type = ItemTypes.Weapon;
                 break;
             case 101:
@@ -101,7 +101,7 @@ public static class ItemData
                 armour = 0;
                 heal = 0;
                 iconName = "Axe_3";
-                meshName = "Axe_3";
+                meshName = "Weapon/Axe";
                 type = ItemTypes.Weapon;
                 break;
             case 103:

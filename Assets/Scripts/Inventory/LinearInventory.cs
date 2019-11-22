@@ -6,11 +6,15 @@ using UnityEngine.UI;
 public class LinearInventory : MonoBehaviour
 {
     #region Variables
+
+    public RawImage[] itemslot, emptySlot;
     public static List<Item> inv = new List<Item>();
+    public GameObject inventoryDisplay;
     public static bool showInv;
     public Item item, selectedItem;
     public Vector2 scr;
-
+    public Material[] mats;
+    public Material empty;
     public static int money;
     public Vector2 scrollPos;
 
@@ -28,36 +32,26 @@ public class LinearInventory : MonoBehaviour
     public EquippedItem[] equippedItems;
     public bool invFilterOptions;
 
-    public GUISkin invSkin;
-    public GUIStyle titleStyle;
+    public Button[] dropItemButton;
+    public Button[] equipItemButton;
     #endregion
 
     void Start()
     {
+        inv.Add(ItemData.CreateItem(100));
         inv.Add(ItemData.CreateItem(0));
         inv.Add(ItemData.CreateItem(1));
         inv.Add(ItemData.CreateItem(2));
         inv.Add(ItemData.CreateItem(3));
-        inv.Add(ItemData.CreateItem(100));
         inv.Add(ItemData.CreateItem(101));
         inv.Add(ItemData.CreateItem(102));
         inv.Add(ItemData.CreateItem(103));
-        inv.Add(ItemData.CreateItem(200));
-        inv.Add(ItemData.CreateItem(201));
-        inv.Add(ItemData.CreateItem(202));
-        inv.Add(ItemData.CreateItem(300));
-        inv.Add(ItemData.CreateItem(301));
-        inv.Add(ItemData.CreateItem(302));
-        inv.Add(ItemData.CreateItem(400));
-        inv.Add(ItemData.CreateItem(401));
-        inv.Add(ItemData.CreateItem(402));
-        inv.Add(ItemData.CreateItem(500));
-        inv.Add(ItemData.CreateItem(501));
-        inv.Add(ItemData.CreateItem(502));
-        inv.Add(ItemData.CreateItem(600));
-        inv.Add(ItemData.CreateItem(601));
-        inv.Add(ItemData.CreateItem(602));
-        showInv = true;
+        for (int i = 0; i < 8; i++)
+        {
+            itemslot[i].GetComponent<RawImage>().texture = inv[i].IconName;
+        }
+
+        /// inventoryDisplay.SetActive(false);
     }
 
     private void Update()
@@ -65,7 +59,8 @@ public class LinearInventory : MonoBehaviour
         if (Input.GetButtonDown("Inventory") && !PauseMenu.isPaused)
         {
             showInv = !showInv;
-            if (showInv)
+            inventoryDisplay.SetActive(showInv);
+            if (showInv == true)
             {
                 Time.timeScale = 0;
                 Cursor.visible = true;
@@ -84,12 +79,11 @@ public class LinearInventory : MonoBehaviour
             inv.Add(ItemData.CreateItem(Random.Range(0, 3)));
         }
     }
-    void OnGUI()
+   /* void OnGUI()
     {
         if (showInv && !PauseMenu.isPaused)
         {
             scr = new Vector2(Screen.width / 16, Screen.height / 9);
-            GUI.skin = invSkin;
             if(GUI.Button(new Rect(3.75f * scr.x, 7f * scr.y, 1.5f * scr.x, 0.25f * scr.y), "Filter"))
             {
                 invFilterOptions = !invFilterOptions;
@@ -144,7 +138,7 @@ public class LinearInventory : MonoBehaviour
                 UseItem();
             }
         }
-    }
+    }*/
 
     void DisplayInv()
     {
@@ -239,10 +233,9 @@ public class LinearInventory : MonoBehaviour
         }
     }
 
-    void UseItem()
+    /*void UseItem()
     {
-        GUI.Box(new Rect(3.75f * scr.x, 0.25f * scr.y, 3 * scr.x, 0.4f * scr.y), selectedItem.Name, titleStyle);
-        GUI.skin = invSkin;
+       
         GUI.Box(new Rect(3.75f * scr.x, 0.65f * scr.y, 3 * scr.x, 3 * scr.y), selectedItem.IconName);
         GUI.Box(new Rect(3.75f * scr.x, 3.65f * scr.y, 3 * scr.x, 3 * scr.y), selectedItem.Description + "\nAmount: " + selectedItem.Amount + "\nPrice: $" + selectedItem.Value);
 
@@ -333,5 +326,39 @@ public class LinearInventory : MonoBehaviour
                 return;
             }
         }
+    }*/
+
+    public void DropItem()
+    {
+        if (selectedItem != null)
+        {
+            Instantiate(selectedItem.MeshName);
+            inv.Remove(selectedItem);
+            for (int i = 0; i < itemslot.Length; i++)
+            {
+                // If the itemslot is less then the inv List Item
+                if (i < inv.Count)
+                {
+                    itemslot[i].material = mats[i];
+                    itemslot[i].GetComponent<RawImage>().texture = inv[i].IconName;
+                }
+                else
+                {
+                    itemslot[i].material = empty;
+                }
+            }
+            selectedItem = null;
+
+        }
+    }
+
+    public void EquipItem()
+    {
+
+    }
+    public void SelectItem(int i)
+    {
+        selectedItem = inv[i];
+        Debug.Log(selectedItem.Name);
     }
 }
