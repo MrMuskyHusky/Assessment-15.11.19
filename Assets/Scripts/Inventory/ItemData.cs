@@ -26,8 +26,8 @@ public static class ItemData
                 damage = 0;
                 armour = 1;
                 heal = 0;
-                iconName = "Armor_1";
-                meshName = "Armor_1";
+                iconName = "Chest";
+                meshName = "Armour/Chest";
                 type = ItemTypes.Armour;
                 break;
             case 1:
@@ -38,8 +38,8 @@ public static class ItemData
                 damage = 0;
                 armour = 1;
                 heal = 0;
-                iconName = "Armor_2";
-                meshName = "Armor_2";
+                iconName = "Boot";
+                meshName = "Armour/Boot";
                 type = ItemTypes.Armour;
                 break;
             case 2:
@@ -50,8 +50,8 @@ public static class ItemData
                 damage = 0;
                 armour = 1;
                 heal = 0;
-                iconName = "Armor_3";
-                meshName = "Armor_3";
+                iconName = "Pants";
+                meshName = "Armour/Pants";
                 type = ItemTypes.Armour;
                 break;
             case 3:
@@ -62,7 +62,7 @@ public static class ItemData
                 damage = 0;
                 armour = 1;
                 heal = 0;
-                iconName = "Helmet_1";
+                iconName = "Helmet";
                 meshName = "Armour/Helmet";
                 type = ItemTypes.Armour;
                 break;
@@ -76,7 +76,7 @@ public static class ItemData
                 damage = 15;
                 armour = 0;
                 heal = 0;
-                iconName = "Axe_1";
+                iconName = "Axe";
                 meshName = "Weapon/Axe";
                 type = ItemTypes.Weapon;
                 break;
@@ -88,8 +88,8 @@ public static class ItemData
                 damage = 10;
                 armour = 0;
                 heal = 0;
-                iconName = "Sword_2";
-                meshName = "Sword_2";
+                iconName = "Sword";
+                meshName = "Weapon/Sword";
                 type = ItemTypes.Weapon;
                 break;
             case 102:
@@ -100,20 +100,20 @@ public static class ItemData
                 damage = 20;
                 armour = 0;
                 heal = 0;
-                iconName = "Axe_3";
-                meshName = "Weapon/Axe";
+                iconName = "Special Axe";
+                meshName = "Weapon/Special Axe";
                 type = ItemTypes.Weapon;
                 break;
             case 103:
-                name = "Mini Axe";
+                name = "Viking Axe";
                 description = "";
                 amount = 1;
                 value = 10;
                 damage = 20;
                 armour = 0;
                 heal = 0;
-                iconName = "Axe_2";
-                meshName = "Weapon/Axe";
+                iconName = "Viking Axe";
+                meshName = "Weapon/Viking Axe";
                 type = ItemTypes.Weapon;
                 break;
             #endregion

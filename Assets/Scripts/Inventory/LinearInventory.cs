@@ -332,7 +332,6 @@ public class LinearInventory : MonoBehaviour
     {
         if (selectedItem != null)
         {
-            Instantiate(selectedItem.MeshName);
             inv.Remove(selectedItem);
             for (int i = 0; i < itemslot.Length; i++)
             {
