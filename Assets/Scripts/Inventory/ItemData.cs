@@ -62,7 +62,7 @@ public static class ItemData
                 damage = 0;
                 armour = 1;
                 heal = 0;
-                iconName = "Helmet";
+                iconName = "Helmet_1";
                 meshName = "Armour/Helmet";
                 type = ItemTypes.Armour;
                 break;

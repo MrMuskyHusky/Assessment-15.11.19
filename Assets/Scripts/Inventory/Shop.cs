@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Shop : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class Shop : MonoBehaviour
     public int[] itemsToSpawn;
     public List<Item> shopInv = new List<Item>();
     public Item selectedShopItem;
+
+    public Button buyItem;
 
     private void Start()
     {

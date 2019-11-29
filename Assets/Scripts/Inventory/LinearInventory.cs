@@ -7,7 +7,7 @@ public class LinearInventory : MonoBehaviour
 {
     #region Variables
 
-    public RawImage[] itemslot, emptySlot;
+    public RawImage[] itemslot, emptyslot;
     public static List<Item> inv = new List<Item>();
     public GameObject inventoryDisplay;
     public static bool showInv;
@@ -38,15 +38,10 @@ public class LinearInventory : MonoBehaviour
 
     void Start()
     {
-        inv.Add(ItemData.CreateItem(100));
-        inv.Add(ItemData.CreateItem(0));
-        inv.Add(ItemData.CreateItem(1));
-        inv.Add(ItemData.CreateItem(2));
         inv.Add(ItemData.CreateItem(3));
-        inv.Add(ItemData.CreateItem(101));
-        inv.Add(ItemData.CreateItem(102));
-        inv.Add(ItemData.CreateItem(103));
-        for (int i = 0; i < 8; i++)
+        inv.Add(ItemData.CreateItem(100));
+        inv.Add(ItemData.CreateItem(300));
+        for (int i = 0; i < 3; i++)
         {
             itemslot[i].GetComponent<RawImage>().texture = inv[i].IconName;
         }
@@ -76,7 +71,7 @@ public class LinearInventory : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.I))
         {
-            inv.Add(ItemData.CreateItem(Random.Range(0, 3)));
+            inv.Add(ItemData.CreateItem(3));
         }
     }
    /* void OnGUI()
@@ -332,6 +327,7 @@ public class LinearInventory : MonoBehaviour
     {
         if (selectedItem != null)
         {
+            Instantiate(selectedItem.MeshName);
             inv.Remove(selectedItem);
             for (int i = 0; i < itemslot.Length; i++)
             {
@@ -341,6 +337,7 @@ public class LinearInventory : MonoBehaviour
                     itemslot[i].material = mats[i];
                     itemslot[i].GetComponent<RawImage>().texture = inv[i].IconName;
                 }
+                // Add an empty icon slot
                 else
                 {
                     itemslot[i].material = empty;

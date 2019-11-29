@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ItemHandler : MonoBehaviour
 {
@@ -50,7 +51,7 @@ public class ItemHandler : MonoBehaviour
 		else // No? just add
 		{
 		    LinearInventory.inv.Add(ItemData.CreateItem(itemId));
-		}
+        }
 		Destroy(gameObject);
 	}
 }
