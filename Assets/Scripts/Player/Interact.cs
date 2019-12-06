@@ -50,11 +50,7 @@ public class Interact : MonoBehaviour
                         Chest chest = hitInfo.transform.GetComponent<Chest>();
                         if(chest != null)
                         {
-                            chest.showChest = true;
-                            LinearInventory.showInv = true;
-                            Cursor.visible = true;
-                            Cursor.lockState = CursorLockMode.None;
-                            Time.timeScale = 0;
+                            chest.ChestInteract();
                         }
                         break;
                     case "Shop":
@@ -62,11 +58,7 @@ public class Interact : MonoBehaviour
                         Shop shop = hitInfo.transform.GetComponent<Shop>();
                         if(shop != null)
                         {
-                            shop.showShop = true;
-                            LinearInventory.showInv = true;
-                            Cursor.visible = true;
-                            Cursor.lockState = CursorLockMode.None;
-                            Time.timeScale = 0;
+                            shop.ShopInteraction();
                         }
                         break;
                 }

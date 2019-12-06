@@ -7,7 +7,7 @@ public class LinearInventory : MonoBehaviour
 {
     #region Variables
 
-    public RawImage[] itemslot, emptyslot;
+    public RawImage[] itemslot;
     public static List<Item> inv = new List<Item>();
     public GameObject inventoryDisplay;
     public static bool showInv;
@@ -41,12 +41,11 @@ public class LinearInventory : MonoBehaviour
         inv.Add(ItemData.CreateItem(3));
         inv.Add(ItemData.CreateItem(100));
         inv.Add(ItemData.CreateItem(300));
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 8; i++)
         {
             itemslot[i].GetComponent<RawImage>().texture = inv[i].IconName;
         }
-
-        /// inventoryDisplay.SetActive(false);
+        inventoryDisplay.SetActive(false);
     }
 
     private void Update()

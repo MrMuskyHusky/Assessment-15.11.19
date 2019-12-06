@@ -18,6 +18,7 @@ public class Customisation : MonoBehaviour
     public string characterName = "Adventurer";
     public PlayerHandler player;
     public PlayerPrefSave saveNew;
+    public Text statScore;
     [System.Serializable]
     public struct Stats
     {
@@ -177,11 +178,11 @@ public class Customisation : MonoBehaviour
             break;
         }
     }
-    void OnGUI()
+    /*void OnGUI()
     {
         scr = new Vector2 (Screen.width / 16, Screen.height / 9);
         DisplayCustom();
-        DisplayStats();
+      //  DisplayStats();
 
         if(GUI.Button(new Rect(scr.x * 7.15f, scr.y * 0.5f, scr.x * 2, scr.y * 0.5f), "Save"))
         {
@@ -306,7 +307,7 @@ public class Customisation : MonoBehaviour
         //            SetTexture("Skin",skinMax);
         
     }
-    void DisplayStats()
+   /* void DisplayStats()
     {
         characterName = GUI.TextField(new Rect(scr.x * 6,scr.y * 7.5f,scr.x * 4,scr.y * 0.5f), characterName, 20);
         int i = 0;
@@ -359,7 +360,29 @@ public class Customisation : MonoBehaviour
         }
     }
     #endregion
+    */
     
+    public void IncreaseTexture(string type)
+    {
+        SetTexture(type, 1);
+    }
+    public void DecreaseTexture(string type)
+    {
+        SetTexture(type, -1);
+    }
+    public void IncreaseStats(int s)
+    {
+        //statScore.text = Stats.Lives.ToString() + "";
+        points--;
+        playerStats[s].tempStat++;
+    }
+    public void DecreaseStats(int s)
+    {
+        //statScore.text = PlayerStats.Lives.ToString() + "";
+        points++;
+        playerStats[s].tempStat--;
+    }
+
     void ChooseClass(int className)
     {
         switch(className)

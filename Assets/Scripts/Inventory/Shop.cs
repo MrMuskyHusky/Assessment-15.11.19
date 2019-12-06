@@ -6,54 +6,76 @@ using UnityEngine.UI;
 public class Shop : MonoBehaviour
 {
     public bool showShop;
+    public GameObject shopDisplay;
     public int[] itemsToSpawn;
+    public RawImage[] items;
     public List<Item> shopInv = new List<Item>();
     public Item selectedShopItem;
-
-    public Button buyItem;
+    public Button[] buyItem;
+    public Texture2D empty;
 
     private void Start()
     {
-        itemsToSpawn = new int[Random.Range(1, 11)];
+        //itemsToSpawn = new int[Random.Range(1, 8)];
         for (int i = 0; i < itemsToSpawn.Length; i++)
         {
-            itemsToSpawn[i] = Random.Range(0,4);
-            shopInv.Add(ItemData.CreateItem(itemsToSpawn[i]));
+            shopInv.Add(ItemData.CreateItem(itemsToSpawn[Random.Range(0, 3)]));
+            Debug.Log(shopInv[i].Name);
+            Debug.Log(shopInv[i].IconName);
+        }
+        for (int i = 0; i < items.Length; i++)
+        {
+            items[i].GetComponent<RawImage>().texture = empty;
+            if (i < shopInv.Count)
+            {
+                items[i].GetComponent<RawImage>().texture = shopInv[i].IconName;
+            }
         }
     }
-    private void OnGUI()
+    public void ShopInteraction()
     {
-        if(showShop)
+        showShop = !showShop;
+        shopDisplay.SetActive(showShop);
+        if (showShop == true)
         {
-            Vector2 scr = new Vector2(Screen.width/16, Screen.height/9);
-            GUI.Box(new Rect(6.5f * scr.x, 0.25f * scr.y, 3f * scr.x, 0.3f * scr.y), "$"+LinearInventory.money);
-            for (int i = 0; i < shopInv.Count; i++)
+            Time.timeScale = 0;
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
+        else
+        {
+            Time.timeScale = 1;
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            selectedShopItem = null;
+        }
+    }
+
+    public void OpenShop()
+    {
+
+        showShop = !showShop;
+        shopDisplay.SetActive(showShop);
+        for (int i = 0; i < items.Length; i++)
+        {
+            items[i].GetComponent<RawImage>().texture = empty;
+            if (i < shopInv.Count)
             {
-                if (GUI.Button(new Rect(12.75f * scr.x, 0.25f * scr.y + i * (0.25f * scr.y), 3 * scr.x, 0.25f * scr.y), shopInv[i].Name))
-                {
-                    selectedShopItem = shopInv[i];
-                }
+                items[i].GetComponent<RawImage>().texture = shopInv[i].IconName;
             }
-            if(selectedShopItem == null)
+        }
+    }
+    public void BuyItem(int element)
+    {
+        shopInv.Remove(shopInv[element]);
+        LinearInventory.inv.Add(ItemData.CreateItem(shopInv[element].ID));
+        for (int i = 0; i < items.Length; i++)
+        {
+            items[i].GetComponent<RawImage>().texture = empty;
+            if (i < shopInv.Count)
             {
-                return;
-            }
-            else
-            {
-                GUI.Box(new Rect(13.5f * scr.x, 6.7f * scr.y, 3 * scr.x, 0.5f * scr.y), "$" + (selectedShopItem.Value + (int)selectedShopItem.Value/4));
-                if(LinearInventory.money >= selectedShopItem.Value)
-                {
-                    if (GUI.Button(new Rect(13.5f * scr.x, 7.2f * scr.y, 1.5f * scr.x, 0.25f * scr.y), "Take"))
-                    {
-                        LinearInventory.inv.Add(ItemData.CreateItem(selectedShopItem.ID));
-                        shopInv.Remove(selectedShopItem);
-                        LinearInventory.money -= (selectedShopItem.Value + (int) selectedShopItem.Value / 4);
-                        selectedShopItem = null;
-                    }
-                }
+                items[i].GetComponent<RawImage>().texture = shopInv[i].IconName;
             }
         }
     }
 }
-
-

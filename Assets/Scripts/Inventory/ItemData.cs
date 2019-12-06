@@ -27,7 +27,7 @@ public static class ItemData
                 armour = 1;
                 heal = 0;
                 iconName = "Chest";
-                meshName = "Armour/Chest";
+                meshName = "Chest";
                 type = ItemTypes.Armour;
                 break;
             case 1:
@@ -39,7 +39,7 @@ public static class ItemData
                 armour = 1;
                 heal = 0;
                 iconName = "Boot";
-                meshName = "Armour/Boot";
+                meshName = "Boot";
                 type = ItemTypes.Armour;
                 break;
             case 2:
@@ -51,7 +51,7 @@ public static class ItemData
                 armour = 1;
                 heal = 0;
                 iconName = "Pants";
-                meshName = "Armour/Pants";
+                meshName = "Pants";
                 type = ItemTypes.Armour;
                 break;
             case 3:
@@ -62,8 +62,8 @@ public static class ItemData
                 damage = 0;
                 armour = 1;
                 heal = 0;
-                iconName = "Helmet_1";
-                meshName = "Armour/Helmet";
+                iconName = "Helmet";
+                meshName = "Helmet";
                 type = ItemTypes.Armour;
                 break;
             #endregion
@@ -77,7 +77,7 @@ public static class ItemData
                 armour = 0;
                 heal = 0;
                 iconName = "Axe";
-                meshName = "Weapon/Axe";
+                meshName = "Axe";
                 type = ItemTypes.Weapon;
                 break;
             case 101:
@@ -89,7 +89,7 @@ public static class ItemData
                 armour = 0;
                 heal = 0;
                 iconName = "Sword";
-                meshName = "Weapon/Sword";
+                meshName = "Sword";
                 type = ItemTypes.Weapon;
                 break;
             case 102:
@@ -101,7 +101,7 @@ public static class ItemData
                 armour = 0;
                 heal = 0;
                 iconName = "Special Axe";
-                meshName = "Weapon/Special Axe";
+                meshName = "Special Axe";
                 type = ItemTypes.Weapon;
                 break;
             case 103:
@@ -113,7 +113,7 @@ public static class ItemData
                 armour = 0;
                 heal = 0;
                 iconName = "Viking Axe";
-                meshName = "Weapon/Viking Axe";
+                meshName = "Viking Axe";
                 type = ItemTypes.Weapon;
                 break;
             #endregion
@@ -164,8 +164,8 @@ public static class ItemData
                 damage = 0;
                 armour = 0;
                 heal = 2;
-                iconName = "Food/Apple";
-                meshName = "Food/Apple";
+                iconName = "Apple";
+                meshName = "Apple";
                 type = ItemTypes.Food;
                 break;
             case 301:
@@ -176,8 +176,8 @@ public static class ItemData
                 damage = 0;
                 armour = 0;
                 heal = 5;
-                iconName = "Food/Meat";
-                meshName = "Food/Meat";
+                iconName = "Meat";
+                meshName = "Meat";
                 type = ItemTypes.Food;
                 break;
             case 302:
@@ -188,8 +188,8 @@ public static class ItemData
                 damage = 0;
                 armour = 0;
                 heal = 5;
-                iconName = "Food/Sandwich";
-                meshName = "Food/Sandwich";
+                iconName = "Sandwich";
+                meshName = "Sandwich";
                 type = ItemTypes.Food;
                 break;
             #endregion
